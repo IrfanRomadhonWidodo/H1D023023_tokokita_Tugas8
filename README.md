@@ -93,8 +93,6 @@ Berikut adalah penjelasan singkat mengenai setiap halaman UI, termasuk detail `A
 
 ---
 
----
-
 ## 🖼️ Tampilan Aplikasi (Screenshot)
 
 Screenshot aplikasi ditempatkan di folder `assets/images/`.
