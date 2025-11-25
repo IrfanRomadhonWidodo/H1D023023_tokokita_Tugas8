@@ -93,15 +93,17 @@ Berikut adalah penjelasan singkat mengenai setiap halaman UI, termasuk detail `A
 
 ---
 
+---
+
 ## 🖼️ Tampilan Aplikasi (Screenshot)
 
-Screenshot aplikasi ditempatkan di folder `assets/`.
+Screenshot aplikasi ditempatkan di folder `assets/images/`.
 
 | Image 1 | Image 2 | Image 3 |
 | :---: | :---: | :---: |
-| [Screenshot 1] | [Screenshot 2] | [Screenshot 3] |
-| Image 4 | Image 5 | Image 6 |
-| [Screenshot 4] | [Screenshot 5] | [Screenshot 6] |
+| !(assets/image1.jpeg) | !(assets/image2.jpeg) | !(assets/image3.jpeg) |
+| **Image 4** | **Image 5** | **Image 6** |
+| !(assets/image4.jpeg) | !(assets/image5.jpeg) | !(assets/image6.jpeg) |
 
 ---
 
