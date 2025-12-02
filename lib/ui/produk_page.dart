@@ -14,16 +14,21 @@ class ProdukPage extends StatefulWidget {
 }
 
 class _ProdukPageState extends State<ProdukPage> {
+  // Warna oranye untuk tema
+  static const Color _orangeColor = Color(0xFFFF9800);
+  static const Color _darkOrangeColor = Color(0xFFE65100);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('List Produk'),
+        backgroundColor: _orangeColor,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-              child: const Icon(Icons.add, size: 26.0),
+              child: Icon(Icons.add, size: 26.0, color: Colors.white),
               onTap: () async {
                 Navigator.push(
                   context,
@@ -37,9 +42,30 @@ class _ProdukPageState extends State<ProdukPage> {
       drawer: Drawer(
         child: ListView(
           children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: _orangeColor),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    'Menu',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Kelola produk Anda',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
             ListTile(
               title: const Text('Logout'),
-              trailing: const Icon(Icons.logout),
+              trailing: Icon(Icons.logout, color: _orangeColor),
               onTap: () async {
                 await LogoutBloc.logout().then(
                   (value) => {
@@ -60,7 +86,11 @@ class _ProdukPageState extends State<ProdukPage> {
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData
               ? ListProduk(list: snapshot.data)
-              : const Center(child: CircularProgressIndicator());
+              : Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(_orangeColor),
+                  ),
+                );
         },
       ),
     );
@@ -88,6 +118,9 @@ class ItemProduk extends StatelessWidget {
 
   const ItemProduk({Key? key, required this.produk}) : super(key: key);
 
+  // Warna oranye untuk tema
+  static const Color _orangeColor = Color(0xFFFF9800);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -98,9 +131,35 @@ class ItemProduk extends StatelessWidget {
         );
       },
       child: Card(
-        child: ListTile(
-          title: Text(produk.namaProduk!),
-          subtitle: Text(produk.hargaProduk.toString()),
+        elevation: 3,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(left: BorderSide(color: _orangeColor, width: 4)),
+          ),
+          child: ListTile(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            title: Text(
+              produk.namaProduk!,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            subtitle: Text(
+              "Rp. ${produk.hargaProduk.toString()}",
+              style: TextStyle(
+                color: _orangeColor,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: _orangeColor,
+              size: 16,
+            ),
+          ),
         ),
       ),
     );

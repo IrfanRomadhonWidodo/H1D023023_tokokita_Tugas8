@@ -19,6 +19,10 @@ class _ProdukFormState extends State<ProdukForm> {
   String judul = "TAMBAH PRODUK";
   String tombolSubmit = "SIMPAN";
 
+  // Warna oranye untuk tema
+  static const Color _orangeColor = Color(0xFFFF9800);
+  static const Color _darkOrangeColor = Color(0xFFE65100);
+
   final _kodeProdukTextboxController = TextEditingController();
   final _namaProdukTextboxController = TextEditingController();
   final _hargaProdukTextboxController = TextEditingController();
@@ -48,17 +52,20 @@ class _ProdukFormState extends State<ProdukForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(judul)),
+      appBar: AppBar(title: Text(judul), backgroundColor: _orangeColor),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
               children: [
                 _kodeProdukTextField(),
+                const SizedBox(height: 16),
                 _namaProdukTextField(),
+                const SizedBox(height: 16),
                 _hargaProdukTextField(),
+                const SizedBox(height: 24),
                 _buttonSubmit(),
               ],
             ),
@@ -71,7 +78,16 @@ class _ProdukFormState extends State<ProdukForm> {
   //Membuat Textbox Kode Produk
   Widget _kodeProdukTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Kode Produk"),
+      decoration: InputDecoration(
+        labelText: "Kode Produk",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade400),
+        ),
+      ),
       keyboardType: TextInputType.text,
       controller: _kodeProdukTextboxController,
       validator: (value) {
@@ -86,7 +102,16 @@ class _ProdukFormState extends State<ProdukForm> {
   //Membuat Textbox Nama Produk
   Widget _namaProdukTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Nama Produk"),
+      decoration: InputDecoration(
+        labelText: "Nama Produk",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade400),
+        ),
+      ),
       keyboardType: TextInputType.text,
       controller: _namaProdukTextboxController,
       validator: (value) {
@@ -101,7 +126,16 @@ class _ProdukFormState extends State<ProdukForm> {
   //Membuat Textbox Harga Produk
   Widget _hargaProdukTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Harga"),
+      decoration: InputDecoration(
+        labelText: "Harga",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade400),
+        ),
+      ),
       keyboardType: TextInputType.number,
       controller: _hargaProdukTextboxController,
       validator: (value) {
@@ -115,8 +149,15 @@ class _ProdukFormState extends State<ProdukForm> {
 
   //Membuat Tombol Simpan/Ubah
   Widget _buttonSubmit() {
-    return OutlinedButton(
-      child: Text(tombolSubmit),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _orangeColor,
+        foregroundColor: Colors.white,
+        elevation: 3,
+        minimumSize: const Size(double.infinity, 50),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
+      child: Text(tombolSubmit, style: const TextStyle(fontSize: 16)),
       onPressed: () {
         var validate = _formKey.currentState!.validate();
         if (validate) {

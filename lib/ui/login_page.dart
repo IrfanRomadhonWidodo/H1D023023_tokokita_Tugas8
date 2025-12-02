@@ -16,13 +16,17 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
 
+  // Warna oranye untuk tema
+  static const Color _orangeColor = Color(0xFFFF9800);
+  static const Color _darkOrangeColor = Color(0xFFE65100);
+
   final _emailTextboxController = TextEditingController();
   final _passwordTextboxController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Login'), backgroundColor: _orangeColor),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -46,7 +50,13 @@ class _LoginPageState extends State<LoginPage> {
   //Membuat Textbox email
   Widget _emailTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Email"),
+      decoration: InputDecoration(
+        labelText: "Email",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+      ),
       keyboardType: TextInputType.emailAddress,
       controller: _emailTextboxController,
       validator: (value) {
@@ -62,7 +72,13 @@ class _LoginPageState extends State<LoginPage> {
   //Membuat Textbox password
   Widget _passwordTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Password"),
+      decoration: InputDecoration(
+        labelText: "Password",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+      ),
       keyboardType: TextInputType.text,
       obscureText: true,
       controller: _passwordTextboxController,
@@ -79,6 +95,12 @@ class _LoginPageState extends State<LoginPage> {
   //Membuat Tombol Login
   Widget _buttonLogin() {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _orangeColor, // Perbaikan di sini
+        foregroundColor: Colors.white, // Perbaikan di sini
+        elevation: 3,
+        minimumSize: const Size(double.infinity, 40),
+      ),
       child: const Text("Login"),
       onPressed: () {
         var validate = _formKey.currentState!.validate();
@@ -138,7 +160,10 @@ class _LoginPageState extends State<LoginPage> {
   Widget _menuRegistrasi() {
     return Center(
       child: InkWell(
-        child: const Text("Registrasi", style: TextStyle(color: Colors.blue)),
+        child: Text(
+          "Registrasi",
+          style: TextStyle(color: _orangeColor, fontWeight: FontWeight.bold),
+        ),
         onTap: () {
           Navigator.push(
             context,

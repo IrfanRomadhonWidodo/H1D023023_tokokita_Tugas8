@@ -14,6 +14,10 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
 
+  // Warna oranye untuk tema
+  static const Color _orangeColor = Color(0xFFFF9800);
+  static const Color _darkOrangeColor = Color(0xFFE65100);
+
   final _namaTextboxController = TextEditingController();
   final _emailTextboxController = TextEditingController();
   final _passwordTextboxController = TextEditingController();
@@ -21,19 +25,26 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Registrasi")),
+      appBar: AppBar(
+        title: const Text("Registrasi"),
+        backgroundColor: _orangeColor,
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _namaTextField(),
+                const SizedBox(height: 16),
                 _emailTextField(),
+                const SizedBox(height: 16),
                 _passwordTextField(),
+                const SizedBox(height: 16),
                 _passwordKonfirmasiTextField(),
+                const SizedBox(height: 24),
                 _buttonRegistrasi(),
               ],
             ),
@@ -46,7 +57,16 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   //Membuat Textbox Nama
   Widget _namaTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Nama"),
+      decoration: InputDecoration(
+        labelText: "Nama",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade400),
+        ),
+      ),
       keyboardType: TextInputType.text,
       controller: _namaTextboxController,
       validator: (value) {
@@ -61,7 +81,16 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   //Membuat Textbox email
   Widget _emailTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Email"),
+      decoration: InputDecoration(
+        labelText: "Email",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade400),
+        ),
+      ),
       keyboardType: TextInputType.emailAddress,
       controller: _emailTextboxController,
       validator: (value) {
@@ -86,7 +115,16 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   //Membuat Textbox password
   Widget _passwordTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Password"),
+      decoration: InputDecoration(
+        labelText: "Password",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade400),
+        ),
+      ),
       keyboardType: TextInputType.text,
       obscureText: true,
       controller: _passwordTextboxController,
@@ -103,7 +141,16 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   //membuat textbox Konfirmasi Password
   Widget _passwordKonfirmasiTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Konfirmasi Password"),
+      decoration: InputDecoration(
+        labelText: "Konfirmasi Password",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: _orangeColor),
+        ),
+        labelStyle: TextStyle(color: _orangeColor),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade400),
+        ),
+      ),
       keyboardType: TextInputType.text,
       obscureText: true,
       validator: (value) {
@@ -119,7 +166,14 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   //Membuat Tombol Registrasi
   Widget _buttonRegistrasi() {
     return ElevatedButton(
-      child: const Text("Registrasi"),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _orangeColor,
+        foregroundColor: Colors.white,
+        elevation: 3,
+        minimumSize: const Size(double.infinity, 50),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
+      child: const Text("Registrasi", style: TextStyle(fontSize: 16)),
       onPressed: () {
         var validate = _formKey.currentState!.validate();
         if (validate) {
