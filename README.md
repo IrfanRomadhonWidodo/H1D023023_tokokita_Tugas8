@@ -181,7 +181,7 @@ Aplikasi dibangun dengan memisahkan tiga lapisan utama:
 ## 🖼️ Tampilan Aplikasi (Screenshot UI Pertemuan 11)
 | Image 1 | Image 2 | Image 3 |
 | :---: | :---: | :---: |
-| ![](/assets/images/image1.jpeg) | ![](/assets/images/image2.jpeg) | ![](/assets/images/image3.jpeg) |
+| ![](/assets/images/image7.jpeg) | ![](/assets/images/image8.jpeg) | ![](/assets/images/image3.jpeg) |
 | **Image 4** | **Image 5** | **Image 6** |
 | ![](/assets/images/image4.jpeg) | ![](/assets/images/image5.jpeg) | ![](/assets/images/image6.jpeg) |
 ---
